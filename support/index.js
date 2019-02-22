@@ -24,3 +24,19 @@ Cypress.on('SyntaxError:exception', (err, runnable) => {
     // failing the test
     return false
 })
+
+it('Initialize', function () {
+    // Get REDCap URL with current version
+    cy.redcapApiCall('version').then((version) => {
+        Cypress.env('vUrl', '/redcap_v' + version.body)
+    })
+
+    // Get project ID for use in URLs
+    cy.redcapApiCall('project').then((data) => {
+        Cypress.env('pid', data.body.project_id)
+    })
+})
+
+beforeEach(function() {
+    cy.login('standard')
+})
