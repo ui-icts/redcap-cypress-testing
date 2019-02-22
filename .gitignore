@@ -1,3 +1,9 @@
-screenshots/*
-videos/*
-integration/testing/*
+cypress/screenshots/*
+cypress/videos/*
+cypress.env.json
+cypress.json
+cypress.env.json
+cypress.env_local.json
+cypress.env_dev.json
+cypress.env_test.json
+cypress.env_prod.json
