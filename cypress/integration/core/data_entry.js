@@ -51,7 +51,7 @@ describe('Add / Edit Records', function() {
     it('Deletes record', function() {
         cy.get('#record').select('1')
         cy.get('#recordActionDropdownTrigger').click()
-        cy.get('#ui-id-6').click()
+        cy.get('#ui-id-4').click()
         cy.get('.ui-dialog-buttonset > :nth-child(2)').click()
     })
 });

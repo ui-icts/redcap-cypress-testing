@@ -99,4 +99,14 @@ Cypress.Commands.add("initializeProject", () => {
     cy.readFile('cypress/fixtures/project_settings.json').then((file) => {
         cy.redcapApiCall('project_settings', file)
     })
+
+    // Restore user rights to known state
+    cy.readFile('cypress/fixtures/users.json').then((file) => {
+        const users = Cypress.env('users')
+        file[0]['username'] = users['standard']['user']
+
+        cy.log(file)
+
+        cy.redcapApiCall('user', file)
+    })
 })
