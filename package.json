@@ -1,0 +1,19 @@
+{
+  "name": "redcap-cypress-testing",
+  "version": "0.0.1",
+  "description": "This is a suite of automated tests that confirm the basic functionality of REDCap via the Cypress Framework.",
+  "bin": "bin.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ui-icts/redcap-cypress-testing.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ui-icts/redcap-cypress-testing/issues"
+  },
+  "homepage": "https://github.com/ui-icts/redcap-cypress-testing#readme",
+  "dependencies": {
+    "cypress": "^3.3.2"
+  }
+}

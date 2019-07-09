@@ -7,3 +7,7 @@ cypress.env_local.json
 cypress.env_dev.json
 cypress.env_test.json
 cypress.env_prod.json
+node_modules
+.DS_Store
+.vscode/
+*.zip
