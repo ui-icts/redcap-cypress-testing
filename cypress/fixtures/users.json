@@ -23,8 +23,8 @@
         "record_rename": 1,
         "record_delete": 1,
         "lock_records_all_forms": 1,
-        "lock_records": 2,
-        "lock_records_customization": 1,
+        "lock_records": 0,
+        "lock_records_customization": 0,
         "forms": {
             "demographics": 3
         }

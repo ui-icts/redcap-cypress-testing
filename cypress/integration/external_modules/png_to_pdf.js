@@ -1,17 +1,23 @@
 /// <reference types="Cypress" />
 
-describe('Surveys', function() {
+describe('PNG to PDF External Module', function() {
+    beforeEach(function () {
+        cy.visit(Cypress.env('vUrl') + '/ProjectSetup/index.php?pid=' + Cypress.env('pid'))
+    })
+
     it('Restores project to known state', function () {
         cy.initializeProject()
     })
 
-    it('Enables survey', function () {
-        cy.visit(Cypress.env('vUrl') + '/ProjectSetup/index.php?pid=' + Cypress.env('pid'))
+    it('Configures main project settings', function () {
         cy.get('#setupEnableSurveysBtn').click()
         cy.wait(1000)
+    })
 
+    it('Enables survey with eConsent Framework', function () {
         cy.visit(Cypress.env('vUrl') + '/Design/online_designer.php?pid=' + Cypress.env('pid'))
-        cy.get('#row_1 > :nth-child(5) > .fc > .jqbuttonsm').click()
+        cy.get('.fc > .jqbuttonsm').click()
+        cy.get('#survey_settings > table > tbody > tr:nth-child(34) > td:nth-child(2) > div:nth-child(3) > input[type=radio]').click()
         cy.get('#surveySettingsSubmit').click()
     })
 
@@ -36,6 +42,8 @@ describe('Surveys', function() {
         cy.get('#weight-tr > .data > .x-form-text').type('70')
         cy.get('#comments').type('Comments go here')
         cy.get('.jqbutton').click()
+
+        cy.get('iframe').its('0.contentDocument').should('exist')
     })
 
     it('Deletes survey settings', function () {
