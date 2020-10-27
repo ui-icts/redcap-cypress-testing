@@ -9,16 +9,22 @@ Cypress.Commands.add("login", (type) => {
             "logout": 1
         }
     }).then(() => {
-        cy.request({
-            method: "POST",
-            url: "/", // baseUrl is prepended to url
-            form: true,            
-            body: {
-                "username": credentials["user"],
-                "password": credentials["pass"],
-                "submitted": 1,
-                "redcap_login_a38us_09i85": "redcap_login_a38us_09i85"
-            }
+        cy.visit('/index.php')
+
+        cy.get('#redcap_login_a38us_09i85').invoke('val').then((val1) => {
+            cy.request({
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded"
+                },
+                method: "POST",
+                url: "/", // baseUrl is prepended to url
+                body: {
+                    "username": credentials["user"],
+                    "password": credentials["pass"],
+                    "submitted": 1,
+                    "redcap_login_a38us_09i85": val1
+                }
+            })
         })
     })
 })
